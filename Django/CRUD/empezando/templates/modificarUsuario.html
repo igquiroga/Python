@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    
+{% include 'navegacion.html' %}
+<br>
+<h2>Modificar usuario</h2>
+<br>
+<form method=POST action="">
+    {% csrf_token %}
+    <label>ID</label>
+    <input type="text" name="id" value={{usuario.id}} readonly><br><br>
+    <label>Nombre</label>
+    <input type="text" name="nombre" value={{usuario.nombre}}><br><br>
+    <label>Clave</label>
+    <input type="password" name="clave" value={{usuario.clave}}><br><br>
+    <button type="submit">Modificar</button>
+</form>
+
+{% endblock %}

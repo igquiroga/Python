@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block nav %}
+{% include 'navbar.html' %}
+{% endblock %}
+{% block body %}
+<div class="backgroundHome ">
+	<div class="titleHome">
+		<p class="h1  titleHome">Welcome to my task api</p>
+	</div>
+	<div class="container-fluid">
+		What is this api used for?
+		<p>This api is created to make a list of taks asociated with an account</p>
+		<p></p>
+		How to use this API?
+		<p>This API use a token that you'll be able to get after you create an account</p>
+		How to make a request ?
+		<p>URL: http://localhost:8000/api/</p>
+		<p class="text-danger">Authorization required: Use OAuth 2.0 // Header Prefix: Token</p>
+		The token is linked with your account, you will be able to access your taks and not the other accounts tasks
+	</div>
+</div>
+{% endblock %}
+

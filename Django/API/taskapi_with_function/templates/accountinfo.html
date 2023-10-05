@@ -1,0 +1,27 @@
+{% extends 'myaccount.html' %}
+{% load widget_tweaks %}
+{% block task %}
+<div class="container-fluid mt-3">
+	<div class="d-flex justify-content-center ">
+		<p class="h2 mt-3">Account information</p>
+	</div>
+	<div class="mt-5">
+		<div class="input-group mb-3">
+		  <span class="input-group-text col-1">User</span>
+		  <input type="text" class="form-control" value="{{request.user}}" disabled ="">
+		</div>
+		<div class="input-group mb-3">
+		  <span class="input-group-text col-1">Token</span>
+		  <input id="tokenInput" type="text" class="form-control" value="{{token}}" disabled ="">
+		  <button class="btn btn-dark" onclick="copyToken()"><i class="fa-solid fa-copy"></i></button>
+		</div>
+		{% if istoken is not True%}
+			<form method="POST">
+				{% csrf_token %}
+				<button class="btn btn-lg btn-dark" name="generateToken">Generate Token</button>
+			</form>
+		{% endif %}
+	</div>
+
+</div>
+{% endblock %}

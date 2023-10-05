@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    
+{% include 'navegacion.html' %}
+<br>
+<h2>Eliminar usuario</h2>
+<br>
+<form method=POST action="">
+    {% csrf_token %}
+    <input type="text" name="id" value="{{usuario.id}}" hidden>
+    <label>Está seguro que desea eliminar {{usuario.nombre}}</label>
+    <button type="submit" name="botonEliminar">Eliminar</button><br><br>
+    <a href="{% url 'listado' %}">Volver</a>
+</form>
+
+{% endblock %}

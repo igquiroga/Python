@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<form method="POST">
+	{% csrf_token %}
+	<br>
+	<div class="container-fluid d-flex justify-content-center">
+		<p class="h5">Esta seguro que desea eliminar esta tarea&nbsp</p>
+		<p class="h5">"{{misTareas}}"?</p>
+	</div>
+	<br>
+	<div class="container-fluid row">
+		<div class="d-flex justify-content-center">
+
+			<a href="{% url 'tareas' %}" class="btn btn-lg btn-dark">Volver</a>
+			&nbsp
+			<input class="btn btn-lg btn-dark" type="submit" name="delete" value="Eliminar"/>
+		</div>
+	</div>  
+</form>
+
+{% endblock %}

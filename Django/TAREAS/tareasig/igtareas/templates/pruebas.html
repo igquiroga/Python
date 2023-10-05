@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<h1 class="tituloTareas">Mis Tareas</h1>
+<hr>
+<div class="container-fluid">
+	<form class="d-flex" method="GET">
+		<input class="form-control me-2" type="search" placeholder="Ingrese una tarea a buscar" aria-label="Búsqueda" name="tareaBuscar" value="{{buscar_input}}">
+		<button class="btn btn-dark" type="submit">Buscar</button>
+	</form>
+</div>
+<hr>
+<div style="height:55vh;overflow:auto">
+<table class="table" >
+	<thead>
+		<tr>
+			<th style="width:1%"></th>
+			<th style="width:10%">Estado</th>
+			<th style="width:50%">Tarea</th>
+			<th><div class="d-flex justify-content-center">Acciones</div></th>
+		</tr>
+	</thead>
+	<tbody>
+
+	{% for tarea in misTareas %}
+
+	<tr> 
+		<td>
+			{% if tarea.complete == 0 %}
+			<span class="estadoCirculo estadoPendiente" style="--estado:#dc3535">{{ forloop.counter }}</span>
+			{% endif%}
+			{% if tarea.complete == 1 %}
+			<span class="estadoCirculo" style="--estado:#529148">{{ forloop.counter }}</span>
+			{% endif%}
+		</td>
+		<td>
+			{% if tarea.complete == 0 %}
+				<p> Pendiente</p>
+			{% endif%}
+			{% if tarea.complete == 1 %}
+				<p> Completa</p>
+			{% endif%}
+		</td>
+		<td>{{ tarea.titulo }}</td> 
+
+		</td>
+		<td>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index:1000;">
+		<div class="container-fluid row">  
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#botonesTareas{{ forloop.counter }}" aria-controls="botonesTareas{{ forloop.counter }}" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+		    <div class="collapse navbar-collapse" id="botonesTareas{{ forloop.counter }}" >
+		    	<div class="col-3 d-flex justify-content-center">
+		    		<a class="littleZoom" href="{% url 'detalleTarea' tarea.id %}">
+					<img src="{% static 'Assets/images/view.png' %}" class="imgIcon">
+					</a>
+				</div>
+				<div class="col-3 d-flex justify-content-center">
+					<a href="{% url 'modificarTarea' tarea.id %}">
+					<img src="{% static 'Assets/images/update.png' %}" class="imgIcon">
+					</a>
+				</div>
+
+				<div class="col-3 d-flex justify-content-center">
+					<a href="{% url 'eliminarTarea' tarea.id %}">
+					<img src="{% static 'Assets/images/delete.png' %}" class="imgIcon">
+					</a>
+				</div>
+				<div class="col-3 d-flex justify-content-center">
+				{% if tarea.complete == 0 %}
+						<a href="{% url 'completarTarea' tarea.id %}">
+							<img src="{% static 'Assets/images/complete.png' %}" class="imgIcon">
+						</a>
+				{% else %}
+						<a href="{% url 'pendienteTarea' tarea.id %}">
+							<img src="{% static 'Assets/images/pendiente.png' %}" class="imgIcon">
+						</a>
+				{% endif %}
+				</div>
+			</div>
+		</div>
+	</nav>
+		</td>
+		</td>
+	</tr>
+	</tbody>
+	{% empty %}
+	<h3>No hay items en la lista</h3>
+
+	
+	</table>
+	
+	{% endfor %}
+</div>
+
+{% endblock %}
+

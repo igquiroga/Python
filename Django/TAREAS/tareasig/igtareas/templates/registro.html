@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="row container-fluid mb-5">
+	<div class="container-fluid">
+		<div class="container-fluid">
+			<h2>Nueva cuenta</h2>
+			<hr>
+		</div>
+		<div class="row container-fluid d-flex justify-content-center">
+			<div class="container-fluid">
+				<form method="POST">
+					{% csrf_token %}
+					<div class="mb-3">
+						<label class="form-label">Usuario</label>
+						{{ form.username|add_class:'form-control' }}
+						<div class="form-text">No compartiremos tu información con nadie.</div>
+					</div>
+					<div>
+						<label class="form-label">Contraseña</label>
+						{{form.password1|add_class:'form-control' }}
+					</div>
+					<div class="mb-3">
+						<div class="form-text">
+							<p><small>*Tu contraseña no puede ser similar a tu usuario</small><br>
+							<small>*Tu contraseña debe contener al menos 8 caracteres</small><br>
+							<small>*Tu contraseña no puede ser común</small><br>
+							<small>*Tu contraseña no puede ser sólo números</small></p>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Repita Contraseña</label>
+						{{form.password2|add_class:'form-control' }}
+					</div>
+					<div class="d-flex justify-content-center">
+						<button type="submit" class="btn btn-lg btn-dark">Registrarse</button>
+					</div>
+					<p>Ya tienes cuenta? <a href="{% url 'login' %}">Iniciar sesión</a></p>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

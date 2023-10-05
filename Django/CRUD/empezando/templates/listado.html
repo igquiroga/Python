@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    
+{% include 'navegacion.html' %}
+<br>
+<h3>Listado de nombres</h3><br>
+<table border=1 cellspacing=0 style="width:50%" >
+    <tr>
+        <th style="width:10%">ID</th>
+        <th style="width:40%">NOMBRE</th>
+    </tr>
+{% for usuario in usuarios %}
+    <tr>
+        <td style="text-align: center;">{{usuario.id}}</td>
+        <td style="text-align: center;">{{usuario.nombre}}</td>
+        <td><a href="{% url 'modificar' id=usuario.id %}">Modificar</a></td>
+        <td><a href="{% url 'eliminar'  id=usuario.id %}">Eliminar</a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

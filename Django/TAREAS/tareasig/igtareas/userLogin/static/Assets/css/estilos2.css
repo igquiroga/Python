@@ -1,0 +1,43 @@
+svg{
+	animation: spin 5s;
+}
+#grupoChecks g{
+	opacity: 0;
+	animation: fadeInUp 8s ease forwards;
+	animation-delay: calc(var(--orderCheck) * 300ms);
+}
+
+#grupoTareas g{
+	opacity: 0;
+	animation: dropIn 8s ease forwards;
+	animation-delay: calc(var(--order) * 300ms);
+}
+@keyframes spin{
+	from{
+		transform: rotate3d(25, 50, 1, 30deg);
+	}
+	to{
+		transform: rotate3d(0, 0, 1, 0);
+	}
+}
+@keyframes fadeInUp{
+	20%{
+		opacity: 0;
+		transform: translateY(10%);
+	}
+	30%, 100%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes dropIn{
+	20%{
+		opacity: 0;
+		transform: translateX(20%);
+	}
+	30%, 100%{
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+

@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="container-fluid">
+	<p class="h4 text-white d-flex justify-content-center">List of Tasks</p>
+	<table class="table table-dark table-striped">
+		<thead>
+			<tr>
+				<th style="text-align: center; width:10%">ID</th>
+				<th style="text-align: center; width:20%">TITLE</th>
+				<th style="text-align: center; width:10%">DATE</th>
+				<th style="text-align: center; width:30%">DESCRIPTION</th>
+				<th style="text-align: center; width:20%">STATUS</th>
+				<th style="text-align: center; width:20%"></th>
+				<th style="text-align: center; width:20%"></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for task in data %}
+	    <tr>
+	        <td style="text-align: center;">{{task.task_id}}</td>
+	        <td style="text-align: center;">{{task.task_title}}</td>
+	        <td style="text-align: center;">{{task.task_date}}</td>
+	        <td style="text-align: center;">{{task.task_description}}</td>
+	        <td style="text-align: center;">
+		        {% if task.task_status is True %}
+		        <form method="POST">
+		        	{% csrf_token %}
+		        	<input type="text" name="task_id" value="{{task.task_id}}" hidden>
+		       		<button class="btn complete-task" name="changeStatus" value="1">Complete</button>
+		       	</form>
+		        {% else %}
+		       	<form method="POST">
+		       		{% csrf_token %}
+		       		<input type="text" name="task_id" value="{{task.task_id}}" hidden>
+		        	<button class="btn pending-task" name="changeStatus" value="0">Pending</button>
+		        {% endif %}
+	        	</form>
+	    	</td>
+	        <td style="text-align: center;"><a class="btn btn-outline-light" href="{% url 'modify-task' task_id=task.task_id %}">Modify</a></td>
+	        <td style="text-align: center;"><a class="btn btn-outline-light" href="{% url 'delete-task' task_id=task.task_id %}">Delete</a></td>
+	    </tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<form method="POST">
+	{% csrf_token %}
+	{{form.titulo|attr:'hidden'}}
+	<br>
+	<div class="container-fluid d-flex justify-content-center">
+		<p class="h5">Esta seguro que desea completar {{misTareas}}?</p>
+	</div>
+	<br>
+	<div class="container-fluid row">
+		<div class="d-flex justify-content-center">
+			<a href="{% url 'tareas' %}" class="btn btn-lg btn-dark">Volver</a>
+			&nbsp
+			<input class="btn btn-lg btn-dark" type="submit" name="completar" value="Completar"/>
+		</div>
+	</div>  
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    
+{% include 'navegacion.html' %}
+<br>
+<h2>Crear usuario</h2>
+<br>
+<form method=POST action="">
+    {% csrf_token %}
+    <label>Nombre</label>
+    <input type="text" name="nombre"><br><br>
+    <label>Clave</label>
+    <input type="password" name="clave"><br><br>
+    <button type="submit">Guardar</button>
+</form>
+
+{% endblock %}

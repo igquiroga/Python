@@ -1,0 +1,93 @@
+{% extends 'myaccount.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block task %}
+{% if isdata is True %}
+<div class="container mt-3">
+	<div class="d-flex justify-content-center ">
+		<p class="h2 mt-3">My Tasks</p>
+	</div>
+	<table class="table table-light table-striped" style="vertical-align:center;">
+		<thead>
+			<tr>
+				<th style="text-align: center; width:10%">STATUS</th>
+				<th style="text-align: start; width:60%">TITLE</th>
+				<th style="text-align: center; width:5%"></th>
+				<th style="text-align: center; width:5%"></th>
+				<th style="text-align: center; width:5%"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for task in data %}
+			<tr>
+				<td style="text-align: center;" data-bs-toggle="tooltip" data-bs-html="true" title="Change status">
+					{% if task.task_status is True %}
+					<form method="POST">
+						{% csrf_token %}
+						<input type="text" name="task_id" value="{{task.task_id}}" hidden>
+						<button class="btn complete-task" name="changeStatus" value="1"><i class="fa-solid fa-check"></i></button>
+					</form>
+					{% else %}
+					<form method="POST">
+						{% csrf_token %}
+						<input type="text" name="task_id" value="{{task.task_id}}" hidden>
+						<button class="btn incomplete-task" name="changeStatus" value="0"><i class="fa-solid fa-x"></i></button>
+						{% endif %}
+					</form>
+				</td>
+				<td data-bs-toggle="tooltip" data-bs-html="true" title="Task title" style="text-align: start;padding-top:1%;">
+					
+					{{task.task_title}}
+
+					
+					
+				</td>
+
+				<td style="text-align: center;" data-bs-toggle="tooltip" data-bs-html="true" title="Modify task"><a class="btn btn-outline-dark" href="{% url 'modify-task' task_id=task.task_id %}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+				<td style="text-align: center;" data-bs-toggle="tooltip" data-bs-html="true" title="Delete task"><button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalDelete" id="buttonDelete" onclick="deleteTask('{{task.task_id}}')"><i class="fa-solid fa-trash"></i></button></td>
+				<td style="text-align: center;" data-bs-toggle="tooltip" data-bs-html="true" title="Task info"><a class="btn btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" onclick="info('{{task.task_id}}','{{task.task_title}}','{{task.task_date}}','{{task.task_description}}')"><i class="fa-solid fa-list-check"></i></a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+		<div class="offcanvas-header">
+			<h5 id="offcanvasTopLabel">Task info</h5>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<div id="infoTask">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Delete task</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form method="POST">
+				<div class="modal-body">
+					{% csrf_token %}	
+					<div class="d-flex justify-content-center">
+						<h4 id="deleteMessage"></h4>
+					</div>
+				</div>
+				<div class="d-flex justify-content-center mb-4">
+					<button id="yesButtonDelete" type="submit" class="col-2 btn btn-lg btn-outline-primary mr-5" name="task_id_delete" value="">YES</button>
+				</div>
+			</form>	
+		</div>
+	</div>
+</div>
+{% else %}
+<div class="container mt-3">
+	<div class="d-flex justify-content-center ">
+		<p class="h2 mt-3">{{data.error}}</p>
+	</div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,100 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>App Django</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Assets/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'Assets/css/estilos.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Assets/css/estilos2.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid p-0 m-0">
+        <div class="container-fluid row navIgTareas p-0 m-0">
+            <div class="col-6 col-md-10 mt-2">
+                 <div class="d-flex justify-content-start">
+                    {# <img src="{% static 'Assets/images/task.png' %}" class="imgLogo"> #} 
+                    {# {% include 'iconoIgTareas.html'%} #}
+                    <a class="botonLogo" href="{% url 'index' %}">
+                    <svg width="40" height="35" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="igtareasIcon" >
+                            <rect width="300" height="300" fill="#212529"/>
+                            <g id="grupoMain">
+                                <rect id="fondoTarea" x="57" y="32" width="184" height="237" rx="15" fill="#343333"/>
+                                <rect id="cabeceraTarea" x="101" y="10" width="96" height="44" rx="15" fill="#7B7777"/>
+                                <g id="bodyTarea">
+                                    <path d="M71 39H229V254H71V39Z" fill="white"/>
+                                    <path d="M71 39H229V254H71V39Z" stroke="black"/>
+                                </g>
+                            </g>
+                            <g id="grupoChecks">
+                                <g id="check4" style="--orderCheck: 4">
+                                    <path id="check4" d="M116 215C116 223.284 109.284 230 101 230C92.7157 230 86 223.284 86 215C86 206.716 92.7157 200 101 200C109.284 200 116 206.716 116 215ZM99.265 222.942L110.394 211.813C110.772 211.435 110.772 210.823 110.394 210.445L109.025 209.076C108.648 208.698 108.035 208.698 107.657 209.076L98.5806 218.152L94.3432 213.915C93.9653 213.537 93.3525 213.537 92.9746 213.915L91.606 215.283C91.2281 215.661 91.2281 216.274 91.606 216.652L97.8963 222.942C98.2743 223.32 98.887 223.32 99.265 222.942Z" fill="#3854BA"/>
+                                </g>
+                                <g id="check3" style="--orderCheck: 3">
+                                    <path id="check3" d="M116 168C116 176.284 109.284 183 101 183C92.7157 183 86 176.284 86 168C86 159.716 92.7157 153 101 153C109.284 153 116 159.716 116 168ZM99.265 175.942L110.394 164.813C110.772 164.435 110.772 163.823 110.394 163.445L109.025 162.076C108.648 161.698 108.035 161.698 107.657 162.076L98.5806 171.152L94.3432 166.915C93.9653 166.537 93.3525 166.537 92.9746 166.915L91.606 168.283C91.2281 168.661 91.2281 169.274 91.606 169.652L97.8963 175.942C98.2743 176.32 98.887 176.32 99.265 175.942Z" fill="#3854BA"/>
+                                </g>
+                                <g id="check2" style="--orderCheck: 2">
+                                    <path id="check2" d="M116 121C116 129.284 109.284 136 101 136C92.7157 136 86 129.284 86 121C86 112.716 92.7157 106 101 106C109.284 106 116 112.716 116 121ZM99.265 128.942L110.394 117.813C110.772 117.435 110.772 116.823 110.394 116.445L109.025 115.076C108.648 114.698 108.035 114.698 107.657 115.076L98.5806 124.152L94.3432 119.915C93.9653 119.537 93.3525 119.537 92.9746 119.915L91.606 121.283C91.2281 121.661 91.2281 122.274 91.606 122.652L97.8963 128.942C98.2743 129.32 98.887 129.32 99.265 128.942Z" fill="#3854BA"/>
+                                </g>
+                                <g id="check1" style="--orderCheck: 1">
+                                    <path id="check1" d="M116 74C116 82.2843 109.284 89 101 89C92.7157 89 86 82.2843 86 74C86 65.7157 92.7157 59 101 59C109.284 59 116 65.7157 116 74ZM99.265 81.9424L110.394 70.8133C110.772 70.4354 110.772 69.8227 110.394 69.4448L109.025 68.0762C108.648 67.6982 108.035 67.6982 107.657 68.0762L98.5806 77.1523L94.3432 72.9149C93.9653 72.537 93.3525 72.537 92.9746 72.9149L91.606 74.2834C91.2281 74.6613 91.2281 75.2741 91.606 75.652L97.8963 81.9423C98.2743 82.3203 98.887 82.3203 99.265 81.9424Z" fill="#3854BA"/>
+                                </g>
+                            </g>
+                            <g id="grupoTareas">
+                                <g id="tarea1" style="--order: 3">
+                                    <line id="tarea4" x1="125" y1="216" x2="203" y2="216" stroke="#3854BA" stroke-width="8"/>
+                                </g>
+                                <g id="tarea1" style="--order: 2">
+                                    <line id="tarea3" x1="125" y1="168" x2="203" y2="168" stroke="#3854BA" stroke-width="8"/>
+                                </g>
+                                <g id="tarea1" style="--order: 1">
+                                    <line id="tarea2" x1="125" y1="122" x2="203" y2="122" stroke="#3854BA" stroke-width="8"/>
+                                    <g id="tarea1" style="--order: 0">
+                                        <line id="tarea1" x1="125" y1="74" x2="203" y2="74" stroke="#3854BA" stroke-width="8"/>
+                                    </g>
+                                </g>
+                            </g>
+                    </svg>
+                    </a>
+
+                    <a class="botonLogo" href="{% url 'index' %}">
+                    <p class="text-white h4 tituloNav">&nbspIGTAREAS</p>
+                    </a>
+                </div>
+            
+        </div>
+        <div class="col-6 col-md-2 d-flex justify-content-end" >
+            <!--
+            <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=small&timezone=America%2FArgentina%2FMendoza" width="100%" height="90" frameborder="0" seamless></iframe> -->
+            <a href="https://time.is/Villa_Nueva,_Mendoza_Province" id="time_is_link" rel="nofollow" style="font-size:1.2rem;text-decoration: none;color: white;">Hora(ARG):&nbsp</a>
+            <span id="Villa_Nueva__Mendoza_Province_z10a" style="font-size:1.2rem;color: white;"></span>
+         </div>
+        </div>
+
+        <div class="container-fluid row p-0 m-0 contenedorPrincipal">
+            <div class="col-12 col-lg-3 barraHerramientas">
+                {% include 'barraHerramientas.html' %}
+            </div>
+            <div class="col-12 col-lg-9 cuerpoApp">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <footer>
+            Holiiiii
+        </footer>  
+    </div>
+
+    {# {% include 'footer.html' %} #}
+
+    <script src="{% static 'Assets/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="//widget.time.is/t.js"></script>
+    <script src="{% static 'Assets/js/timescript.js' %}"></script>	
+</body>
+</html>

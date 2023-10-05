@@ -1,0 +1,154 @@
+body {
+    background-color: #212529;
+    font-family: "Roboto";
+}
+
+.bg-gris {
+    background-color: #51575A;
+}
+
+.logoImagen {
+    width: 40vw;
+}
+
+.border {
+    color: #407D9A;
+}
+
+.contenedorLogin {
+    background-color: white;
+    height: 90vh;
+}
+
+.contenedorFooter {
+    height: 10vh;
+}
+
+.navIgTareas {
+    height: 8vh;
+}
+
+.contenedorPrincipal {
+    height: 85vh;
+    background-color: #EFF1F3;
+}
+
+.barraHerramientas {
+    height: 85vh;
+    background-color: #EFF1F3;
+}
+
+.cuerpoApp {
+    height: 85vh;
+    background-color: white;
+}
+
+.botonHerramienta {
+    text-decoration: none;
+    color: #323435;
+    font-size: 1.2rem;
+}
+
+.botonLogo {
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.botonHerramienta:hover {
+    transition: 2s;
+    background-color: #C9C9C9;
+    color: #323435;
+    font-size: 1.3rem;
+}
+
+.imgLogo {
+    width: 2vw;
+    height: 2vw;
+    background-color: white;
+}
+
+.imgIcon {
+    width: 2vw;
+    height: 4vh;
+}
+
+.imgIcon2 {
+    width: 2vw;
+    height: 2vw;
+}
+
+.imgTareas {
+    width: 10vw;
+    height: 10vw;
+}
+
+.imgSlide {
+    width: 40vw;
+    height: 30vw;
+}
+
+.imgSlide2 {
+    width: 30vw;
+    height: 30vw;
+}
+
+.estadoCirculo {
+    background: var(--estado);
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    text-align: center;
+    width: 1.6em;
+}
+
+.estadoPendiente:hover {
+    animation: pendiente 500ms ease-in infinite;
+}
+
+@keyframes pendiente {
+    0% {
+        transform: translateY(2%);
+    }
+    50% {
+        transform: translateY(10%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.imgIcon:hover {
+    transition: 100ms;
+    width: 2.2vw;
+    height: 2.2vw;
+}
+
+.tituloTareas {
+    animation: ingresarAnim 500ms ease-in;
+}
+
+.tituloNav {
+    animation: ingresarAnim 1s ease-in-out;
+}
+
+@keyframes ingresarAnim {
+    0% {
+        transform: translateX(0.1%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .barraHerramientas {
+        height: 5vh;
+    }
+    .cuerpoApp {
+        margin-top: 5vh;
+    }
+}

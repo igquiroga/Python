@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<h3>Nueva Tarea</h3>
+	<form method="POST" action="">
+		{% csrf_token %}
+		<div class="mb-3">
+	    	<label class="form-label">Titulo</label>
+	    	{{form.titulo}}
+	  	</div>
+		<div class="mb-3">
+	    	<label class="form-label">Descripción</label>
+	    	{{form.descripcion}}
+	  	</div>
+	  	<div class="container-fluid row">
+	  		<div class="d-flex justify-content-center">
+	  			<a href="{% url 'tareas' %}" class="btn btn-lg btn-dark">Volver</a>
+	  			&nbsp
+	  			<button class="btn btn-lg btn-dark" type="submit" name="tareaBoton">{{boton}}</button>
+	  		</div>
+	  	</div>  	
+	</form>
+{% endblock %}
+

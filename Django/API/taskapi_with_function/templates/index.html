@@ -1,0 +1,28 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'Assets/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'Assets/css/taskstyles.css'%}">
+</head>
+<body>
+	<div class="row container-fluid" >
+		<div class="col-12 col-md-2 mynavbar bg-dark text-white" >
+			{% block nav %}
+			{% endblock %}
+		</div>
+		<div class="col-12 col-md-10 no-margin-padding">
+	    	{% block body %}
+			{% endblock %}
+		</div>
+	</div>
+	
+    <script src="{% static 'Assets/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'Assets/js/myscripts.js' %}"></script>
+    <script src="https://kit.fontawesome.com/8e8ffdb433.js" crossorigin="anonymous"></script>
+</body>
+</html>

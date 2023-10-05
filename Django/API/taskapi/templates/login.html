@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% block nav %}
+{% include 'navbar.html' %}
+{% endblock %}
+{% block body %}
+<div class="container col-12 col-md-8">
+	<div class="container-fluid">
+		<div class="row container-fluid d-flex justify-content-center mt-5">
+			<div class="container-fluid ">
+				<form method="POST">
+					{% csrf_token %}
+					<div class="mb-3">
+						<label class="form-label">User</label>
+						{{ form.username|add_class:'form-control' }}
+						<div class="form-text">Don´t share your credentials.</div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Password</label>
+						{{form.password|add_class:'form-control' }}
+					</div>
+					{% if form.errors %}
+						<p class="text-danger">Please enter a correct username and password. Note that both fields may be case-sensitive.</p>
+					{% endif %}
+					
+					<div class="d-flex justify-content-center mt-5">
+						<button type="submit" class="btn btn-lg btn-dark">Login</button>
+					</div>
+					<br>
+					<p>Do you want to create an account? <a href="{% url 'user-create' %}">Sing up</a></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
